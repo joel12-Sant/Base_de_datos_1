@@ -1,7 +1,11 @@
-Al momento de descargar o clonar el repositorio en tu local para que puedas ver las tablas de la base de datos debes copiar y pergar los siguientes comandos en la terminal de tu directorio actual
+1.-Extrae el documento zip en la ruta que desees 
+2.-Ingresa a la carpeta que acabas de extraer y abre una terminal desde ahi
+3.-Ejecuta el comando " docker compose up -d " sin las comillas para que puedas levantar el contenedor
+4.-Ejecuta el comnado " docker ps " para poder ver los contenedores que estan corriendo y copia el id del contenedor que tenga la imagen sql
+5.-Ejecuta el siguiente comando " docker cp backup.sql id_contenedor:/backup.sql " reemplaza la parte que dice id_contenedor por el id que copiaste en el paso anterior
+6.-Ejecuta el comando " docker exec -it id_contenedor mysql -u root -p " reemplaza la parte que dice id_contenedor por el id que copiaste en el paso anterior, te pedira que ingreses una contraseña: "root"
+7.-coloca la siguiente instruccion " create database olympics; "
+8.-coloca la siguiente instruccion " use olympics "
+9.-coloca la siguinete instruccion " source backup.sql "
 
-- docker cp backup.sql (El id o nombre de tu contenedor):/backup.sql   -> Este comando copia el backup en el contenedor
-- docker exec -i 4d mysql -u root -p${MYSQL_ROOT_PASSWORD} ${MYSQL_DATABASE} < backup.sql  -> Este comando ejecuta el archivo backup para recuperar las tablas de la base de datos
-
-Despues levanta tu contenedor y verifica que las tablas se hayan agregaso correctamente
-
+listo ya tendas todas las tablas de la base de datos en tu contendor, estas instrucciones solo es nesesario hacerlas una vez.
